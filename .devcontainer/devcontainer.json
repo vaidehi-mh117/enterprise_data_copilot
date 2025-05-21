@@ -1,0 +1,27 @@
+{
+    "name": "enterprise-data-copilot",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:1": {}
+    },
+    "forwardPorts": [
+        8000,
+        6333,
+        5432
+    ],
+    "postCreateCommand": "docker compose up -d",
+    "containerEnv": {
+        "OPENAI_API_KEY": "${secret:OPENAI_API_KEY}",
+        "PG_PW": "${secret:PG_PW}"
+    },
+    "customizations": {
+        "codespaces": {
+            "secrets": [
+                "OPENAI_API_KEY",
+                "PG_PW"
+            ]
+        }
+    }
+}

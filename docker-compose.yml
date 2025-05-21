@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  qdrant:
+    image: qdrant/qdrant
+    ports: [ "6333:6333" ]
+  postgres:
+    image: ankane/pgvector
+    environment:
+      POSTGRES_PASSWORD: ${PG_PW}
+    ports: [ "5432:5432" ]
